@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -109,6 +110,14 @@ public class MainActivity extends AppCompatActivity {
     public void showUser(View view){
         Intent intent = new Intent(this, DisplayUserActivity.class);
 
+      TextView texto = view.findViewById(R.id.id);
+
+    // String string = (String) texto.getText();
+
+  //   int numero = Integer.parseInt(string);
+
+    // intent.putExtra("id",numero);
+     startActivity(intent);
 
     }
 

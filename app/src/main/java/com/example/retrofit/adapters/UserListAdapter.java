@@ -42,6 +42,9 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
         System.out.println(user.getFirstName());
         holder.name.setText(user.getFirstName());
         holder.lastName.setText(user.getLastName());
+      //  holder.id.setText();
+       holder.id.setText(user.getId().toString());
+
 
 /*        holder.sent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +71,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
            name = itemView.findViewById(R.id.firstName);
             lastName = itemView.findViewById(R.id.lastName);
-         //   id = itemView.findViewById(R.id.id);
+             id = itemView.findViewById(R.id.id);
            // sent = itemView.findViewById(R.id.sent); */
 
 
