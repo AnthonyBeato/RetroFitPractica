@@ -1,7 +1,9 @@
 package com.example.retrofit;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -99,12 +101,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //Recycle
 
 
     }
 
 
+    public void showUser(View view){
+        Intent intent = new Intent(this, DisplayUserActivity.class);
+
+
+    }
 
 
 }
