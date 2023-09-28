@@ -11,6 +11,6 @@ public interface APIInterface {
     Call<UserList> findAll();
 
     @GET("users/{id}")
-    Call<UserSingle> find(@Path("id") int id);
+    Call<UserSingle  > find(@Path("id") int id);
 
 }
