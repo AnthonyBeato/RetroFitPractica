@@ -26,7 +26,7 @@ public class UserAdapterReyclerView extends RecyclerView.Adapter<UserAdapterReyc
     @NotNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_student, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
 
         return new UserAdapterReyclerView.UserViewHolder(view);
     }
@@ -64,7 +64,7 @@ public class UserAdapterReyclerView extends RecyclerView.Adapter<UserAdapterReyc
 
             firstName = itemView.findViewById(R.id.firstName);
             lastName = itemView.findViewById(R.id.lastName);
-            id = itemView.findViewById(R.id.id);
+           // id = itemView.findViewById(R.id.id);
         }
     }
 }
