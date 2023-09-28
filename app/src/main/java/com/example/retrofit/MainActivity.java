@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.retrofit.adapters.UserAdapterReyclerView;
+import com.example.retrofit.adapters.UserListAdapter;
 import com.example.retrofit.api.APIClient;
 import com.example.retrofit.api.APIInterface;
 import com.example.retrofit.databinding.ActivityMainBinding;
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+
     private List<User> listUsers = new ArrayList<User>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +61,33 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<UserList> call, Response<UserList> response) {
                System.out.println(response.body().data);
 
-               listUsers = response.body().getData();
 
+
+                listUsers = response.body().getData();
+                System.out.println(listUsers.get(0).getFirstName());
+
+
+                RecyclerView recyclerView = binding.recycler;
+
+                int spanCount = 2;
+
+                if (MainActivity.this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    spanCount = 4;
+                }
                 System.out.println(listUsers);
 
+                recyclerView.setHasFixedSize(true);
+                //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), spanCount));
+
+                 UserListAdapter adapter = new UserListAdapter(listUsers);
+                //Obtener el listado de usuarios de la API\
+
+                System.out.println(adapter.getItemCount());
+                recyclerView.setAdapter(adapter);
+
+                adapter.notifyDataSetChanged();
+             //   call.cancel();
             }
 
             @Override
@@ -73,25 +99,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         //Recycle
-        RecyclerView recyclerView = binding.recycler;
 
-        int spanCount = 2;
-
-        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            spanCount = 4;
-        }
-
-        recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), spanCount));
-
-
-        //Obtener el listado de usuarios de la API\
-        System.out.println(listUsers);
-
-        recyclerView.setAdapter(new UserAdapterReyclerView(listUsers));
 
     }
+
+
+
+
 }

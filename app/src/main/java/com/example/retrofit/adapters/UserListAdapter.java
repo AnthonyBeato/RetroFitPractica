@@ -17,11 +17,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class UserList extends RecyclerView.Adapter<UserList.UserViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserViewHolder> {
 
     private final List<User> users;
 
-    public UserList(List<User> users) {
+    public UserListAdapter(List<User> users) {
         this.users = users;
     }
 
@@ -29,24 +29,26 @@ public class UserList extends RecyclerView.Adapter<UserList.UserViewHolder> {
     @NotNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
 
-        return new UserList.UserViewHolder(view);
+        return new UserListAdapter.UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull UserViewHolder holder, int position) {
         User user = users.get(position);
 
+
+        System.out.println(user.getFirstName());
         holder.name.setText(user.getFirstName());
         holder.lastName.setText(user.getLastName());
 
-        holder.sent.setOnClickListener(new View.OnClickListener() {
+/*        holder.sent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Hola: " + user.getFirstName(), Toast.LENGTH_LONG).show();
             }
-        });
+        }); */
     }
 
     @Override
@@ -64,10 +66,12 @@ public class UserList extends RecyclerView.Adapter<UserList.UserViewHolder> {
         public UserViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
-       /*     name = itemView.findViewById(R.id.name);
+           name = itemView.findViewById(R.id.firstName);
             lastName = itemView.findViewById(R.id.lastName);
-            id = itemView.findViewById(R.id.id);
-            sent = itemView.findViewById(R.id.sent); */
+         //   id = itemView.findViewById(R.id.id);
+           // sent = itemView.findViewById(R.id.sent); */
+
+
         }
     }
 
