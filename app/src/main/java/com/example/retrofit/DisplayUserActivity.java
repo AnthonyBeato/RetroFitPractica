@@ -20,6 +20,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
+import com.squareup.picasso.Picasso;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,17 +54,13 @@ public class DisplayUserActivity extends AppCompatActivity {
                 nombre.setText(response.body().getData().getFirstName());
                 apellido.setText(response.body().getData().getLastName());
                 correo.setText(response.body().getData().getEmail());
-                try {
-                    URL url = new URL(response.body().getData().getAvatar());
-                    // Bitmap mapa = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                  //  avatar.setImageBitmap(mapa);
-                } catch (MalformedURLException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
 
 
+                // Obtén la URL del avatar desde la respuesta de Retrofit
+                String avatarUrl = response.body().getData().getAvatar();
+
+                // Carga la imagen utilizando Picasso
+                Picasso.get().load(avatarUrl).into(avatar);
             }
 
             @Override
