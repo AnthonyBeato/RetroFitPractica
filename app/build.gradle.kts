@@ -48,4 +48,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttp3_version")
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3_version")
     implementation("com.google.code.gson:gson:2.8.9")
+
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
 }
